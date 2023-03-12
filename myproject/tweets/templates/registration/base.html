@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'tweets:index' %}">Home</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'tweets:create_tweet' %}">Create Tweet</a></li>
+                <li><a href="{% url 'tweets:user_profile' user.username %}">{{ user.username }}</a></li>
+                <li><a href="{% url 'tweets:logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'tweets:register' %}">Register</a></li>
+                <li><a href="{% url 'tweets:login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

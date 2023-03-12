@@ -1,0 +1,59 @@
+<style>
+  h1{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color:bisque;
+  }
+  body{
+    background-color: antiquewhite;
+  }
+  label{
+    font-family: 'Courier New', Courier, monospace;
+  }
+  input{
+    text-align: center;
+    border-radius: 2%;
+  }
+  form{
+    background-color: rgb(19, 180, 86);
+  }
+</style>
+<script>
+    
+  function validateForm() {
+        debugger;
+        var un = document.getElementById("username").value;
+        var pw = document.getElementById("password").value;
+        var username = "username";
+        var password = "password";
+        if(un=="" || pw==""){
+            alert("Login was unsuccessful, please check your username and password");
+            return false;
+        }
+        else{
+            return true;
+        }
+}
+</script>
+{% block content %}
+{% csrf_token %}
+<body>
+<br><br>
+
+<form method="post" align="center" action="#" onsubmit="return validateForm()"><br>
+  <h1 align="center">LOGIN PAGE</h1>
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="username">Username</label><br>
+    <input type="text" class="form-control" id="username" name="username">
+  </div><br>
+  <div class="form-group">
+    <label for="password">Password</label><br>
+    <input type="password" class="form-control" id="password" name="password">
+  </div><br>
+  <button type="submit" class="btn btn-primary">Login</button>
+  <br>
+  <br>
+</form>
+</body>
+
+{% endblock %}

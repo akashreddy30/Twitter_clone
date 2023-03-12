@@ -1,0 +1,86 @@
+
+<style>
+  /* Styling for the form */
+
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+textarea {
+  height: 150px;
+}
+
+button {
+      background-color: #b81a15;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+/* Styling for the page */
+body {
+  background-color: #f5f8fa;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+</style>
+{% block content %}
+<h2>All Tweets</h2>
+{% if tweets %}
+  {% for tweet in tweets %}
+  <form method="post" action="{% url 'delete_tweet' tweet.content %}">
+    {% csrf_token %}
+    <div class="card">
+      <div class="card-body">
+        <input type="text" readonly="readonly" name="content" value="{{ tweet.content }}">
+        <h5 class="card-title">{{ tweet.created_at }}</h5>
+        <button type="submit">Delete</a></button>
+      </div>
+    </div>
+    <br>
+  </form>
+  {% endfor %}
+{% else %}
+  <p>No tweets found.</p>
+{% endif %}
+
+{% endblock %}

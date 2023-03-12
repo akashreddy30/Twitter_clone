@@ -1,0 +1,35 @@
+<style>
+  p{
+    font-style: initial;
+  }
+  h1{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+  }
+  body{
+    background-color: aliceblue;
+  }
+    button a{
+      background-color: #3862d4;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+</style>
+{% block content %}
+<form align="center"><br><br>
+  <h1>Profile Page</h1>
+  <p><b>Username:</b> {{ user_profile.username }}</p>
+  <p><b>Email:</b> {{ user_profile.email }}</p>
+  <p><b>First Name:</b> {{ user_profile.first_name }}</p>
+  <p><b>Last Name:</b> {{ user_profile.last_name }}</p>
+  <p><b>Mobile:</b> {{ up.mobile }}</p>
+  <button><a href="{% url 'create_tweet' %}" style="text-decoration: none;">Create Tweet</a></button>
+  <button><a href="{% url 'list_tweets' %}" style="text-decoration: none;">View Tweets</a></button>
+</form>
+{% endblock %}

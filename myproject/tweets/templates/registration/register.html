@@ -1,0 +1,50 @@
+
+<style>
+  body{
+    background-color: antiquewhite;
+  }
+  label{
+    font-family: 'Courier New', Courier, monospace;
+  }
+  input{
+    text-align: center;
+    border-radius: 2%;
+  }
+  form{
+    background-color: rgb(34, 180, 78);
+  }
+</style>
+{% block content %}
+<body><br><br>
+<h1 align="center">Registration Page</h1>
+<form method="post" align="center">
+  {% csrf_token %}<br><br>
+  <div class="form-group">
+    <label for="username">Username</label><br>
+    <input type="text" class="form-control" id="username" name="username">
+  </div><br>
+  <div class="form-group">
+    <label for="email">Email address</label><br>
+    <input type="email" class="form-control" id="email" name="email">
+  </div><br>
+  <div class="form-group">
+    <label for="password">Password</label><br>
+    <input type="password" class="form-control" id="password" name="password">
+  </div><br>
+  <div class="form-group">
+    <label for="first_name">First Name</label><br>
+    <input type="text" class="form-control" id="first_name" name="first_name">
+  </div><br>
+  <div class="form-group">
+    <label for="mobile">Mobile</label><br>
+    <input type="text" class="form-control" id="mobile" name="mobile">
+  </div><br>
+  <div class="form-group">
+    <label for="last_name">Last Name</label><br>
+    <input type="text" class="form-control" id="last_name" name="last_name">
+  </div><br>
+  <button type="submit" class="btn btn-primary">Register</button>
+  <br><br>
+</form>
+</body>
+{% endblock %}
